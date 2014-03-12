@@ -1,41 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using System.Windows;
+using System.Windows.Media;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using HelloWorld.Resources;
 
 namespace HelloWorld
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
+        private SolidColorBrush globeBrush;
+
+        private Color[] colors = { Colors.Red, Colors.Orange, Colors.Yellow, Colors.Green, Colors.Blue, Colors.Purple };
+
+        private int colorIndex = 0;
+
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            globeBrush = (SolidColorBrush)ContentPanel.Resources["GlobeBrush"];
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void Canvas_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            colorIndex++;
+            if (colorIndex >= colors.Length)
+            {
+                colorIndex = 0;
+            }
+            globeBrush.Color = colors[colorIndex];
+        }
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+        private void Canvas_DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            globeBrush.Color = (Color)Application.Current.Resources["PhoneAccentColor"];
+        }
     }
 }
