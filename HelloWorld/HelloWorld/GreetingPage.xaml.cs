@@ -16,5 +16,11 @@ namespace HelloWorld
         {
             InitializeComponent();
         }
+
+        private void ApplicationBarIconButton_OnClick(object sender, EventArgs e)
+        {
+            var message = string.Format("Hello {0}",HelloMessage.Text);
+            Clipboard.SetText(message);
+        }
     }
 }

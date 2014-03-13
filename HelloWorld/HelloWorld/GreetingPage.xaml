@@ -13,6 +13,13 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton Text="Ok" IconUri="Assets/Icons/check.png" Click="ApplicationBarIconButton_OnClick"/>
+            <shell:ApplicationBarIconButton Text="Copy" IconUri="Assets/Icons/save.png"/>
+            <shell:ApplicationBarIconButton Text="Pin" IconUri="Assets/Icons/share.png"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -34,7 +41,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="{StaticResource PhoneMargin}" Text="Hello" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            <TextBlock Margin="{StaticResource PhoneMargin}" x:Name="HelloMessage"  Text="Hello" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
             <RichTextBox Grid.Row="2" Margin="{StaticResource PhoneMargin}" VerticalAlignment="Top">
                 <Paragraph FontSize="{StaticResource PhoneFontSizeNormal}">Welcome to</Paragraph>
                 <Paragraph FontSize="{StaticResource PhoneFontSizeMedium}" Foreground="{StaticResource PhoneAccentBrush}"><Italic>Windows phone in Action</Italic></Paragraph>
