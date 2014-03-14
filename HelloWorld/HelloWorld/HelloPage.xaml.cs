@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using Microsoft.Phone.Controls;
 
@@ -31,6 +32,11 @@ namespace HelloWorld
         private void Canvas_DoubleTap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             globeBrush.Color = (Color)Application.Current.Resources["PhoneAccentColor"];
+        }
+
+        private void NameInput_OnActionIconTapped(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GreetingPage.xaml",UriKind.Relative));
         }
     }
 }
